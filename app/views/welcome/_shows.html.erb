@@ -8,8 +8,25 @@
       <td><p><%= show.date.strftime('%B %d') %></p></td>
       <td><p><%= show.location %><br />
         <%= show.venue %></p></td>
-      <td><p><%= link_to "details", "#", class: "button small", data: { show_id: show.id } %></p></td>
+      <td>
+        <p>
+          <%= link_to "details", "#", class: "button radius small", data: { "reveal-id" => "showinfo-#{show.id}" } %>
+          <% if current_user %>
+            <br />
+            <%= link_to "edit this show", edit_show_path(show) %>
+          <% end %>
+        </p>
+      </td>
     </tr>
+    <% content_for :closing do %>
+    <div style="display:none" class="reveal-modal medium" id="<%= "showinfo-#{show.id}" %>">
+      <h3><%= show.date.strftime('%B %d') %></h3>
+      <h4 class="subheader"><%= "#{show.venue} - #{show.location}" %></h4>
+      <%= simple_format show.info %>
+      <%= link_to "tickets", show.link, class: "button radius" %>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+    <% end %>
   <% end %>
   </table>
 <% end %>
