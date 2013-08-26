@@ -22,6 +22,7 @@ class ShowsController < ApplicationController
 
   def edit
     @show = Show.find params[:id]
+    render layout: false
   end
 
   def update
