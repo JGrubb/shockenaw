@@ -13,7 +13,7 @@
           <%= link_to "details", "#", class: "button radius small", data: { "reveal-id" => "showinfo-#{show.id}" } %>
           <% if current_user %>
             <br />
-            <%= link_to "edit this show", edit_show_path(show) %>
+            <%= link_to "edit", edit_show_path(show), class: "button tiny secondary radius" %>
           <% end %>
         </p>
       </td>

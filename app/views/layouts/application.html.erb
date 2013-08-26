@@ -38,7 +38,7 @@
       <div id="footer-links">
         <%= link_to "Site by Grubb", "http://www.ignoredbydinosaurs.com" %> 
         <% if current_user %>
-          | <%= link_to "Add show", new_show_path %>
+          | <%= link_to "Add show", "#", data: { "reveal-id" => "new-show", "reveal-ajax" => new_show_path } %>
           | <%= link_to "Logout", destroy_user_session_path, method: :delete %>
         <% else %>
           | <%= link_to "Login", new_user_session_path %>
