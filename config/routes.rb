@@ -1,10 +1,11 @@
 Shock::Application.routes.draw do
-  devise_for :users, path_names: { sign_in: "login", sign_out: "logout", registration: "register"  }
+  devise_for :users
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  resource :shows
+  resources :shows
+  resources :items
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'

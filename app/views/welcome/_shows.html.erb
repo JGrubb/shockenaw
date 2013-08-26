@@ -1,0 +1,10 @@
+<table id="shows">
+<% @shows.each do |show| %>
+  <tr>
+    <td><p><%= show.date.strftime('%B %d') %></p></td>
+    <td><p><%= show.location %><br />
+      <%= show.venue %></p></td>
+    <td><p><%= link_to "details", "#", class: "button small", data: { show_id: show.id } %></p></td>
+  </tr>
+<% end %>
+</table>
