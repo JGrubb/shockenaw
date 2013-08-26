@@ -22,14 +22,18 @@
   <body>
     <div id="header">
       <div class="row">
-        <header id="logo">
+        <header id="logo" class="large-12 columns">
           <h1><%= link_to "The Shockenaw Mountain Boys", root_path %></h1>
         </header>
       </div>
     </div>
-    <%= notice %>
-    <%= alert %>
-    <%= yield %>
+    <div id="body">
+      <div class="row">
+        <%= notice %>
+        <%= alert %>
+      </div>
+      <%= yield %>
+    </div>
 
     
     <%= javascript_include_tag "application" %>

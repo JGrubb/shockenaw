@@ -1,5 +1,9 @@
 class ShowsController < ApplicationController
 
+  def show
+
+  end
+  
   def new
     @show = Show.new
     render layout: false

@@ -1,3 +1,25 @@
-<div class="row">
-  <%= link_to "new show", new_shows_path, class: "button small" %>
-</div>
+<section id="intro">
+  <div class="row">
+    <div class="large-12 columns">
+      <%= image_tag( asset_path 'shock.jpg' ) %>
+    </div>
+  </div>
+</section>
+<section id="info">
+  <div class="row">
+    <div class="large-8 columns">
+      <h3>the bio</h3>
+      <p>The Shockenaw Mountain Boys were formed for fun and profit (so far mostly fun) during the second gulf war. Featuring the talents of three current members of the national touring act Railroad Earth and one former member and current member of the excellent Emmit-Nershi Band, their performances are legend and by legend I mean mostly myth. So if you have the opportunity to see them, you should. It would be like seeing a unicorn... sort of.</p>
+    </div>
+    <div class="large-4 columns">
+      <h3>the shows</h3>
+      <%= render 'shows' %>
+    </div>
+  </div>
+</section>
+<section id="members">
+  <div class="row">
+    <h2 class="section-header">the dudes</h2>
+    <%= render 'dudes' %>
+  </div>
+</section>
