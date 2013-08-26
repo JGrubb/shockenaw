@@ -1,8 +1,4 @@
-<%= simple_form_for @show do |f| %>
-  <%= f.input :date, as: :string %>
-  <%= f.input :venue %>
-  <%= f.input :location %>
-  <%= f.input :info %>
-  <%= f.input :link %>
-  <% f.button :submit, class: "button small" %>
+<%= render 'form' %>
+<% content_for :closing do %>
+  <div id="new-show" class="reveal-modal"></div>
 <% end %>

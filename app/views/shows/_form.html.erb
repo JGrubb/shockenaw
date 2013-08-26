@@ -1,0 +1,8 @@
+<%= simple_form_for @show do |f| %>
+  <%= f.input :date, as: :string %>
+  <%= f.input :venue %>
+  <%= f.input :location %>
+  <%= f.input :info, input_html: { rows: 6 } %>
+  <%= f.input :link %>
+  <%= f.button :submit, class: "button small" %>
+<% end %>
