@@ -15,7 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 gem 'zurb-foundation', '~> 4.3.1'
-gem 'jquery-ui-rails'
+gem 'compass-rails'
 gem 'simple_form'
 gem 'annotate'
 
