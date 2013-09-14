@@ -18,7 +18,6 @@
         </p>
       </td>
     </tr>
-    <% content_for :closing do %>
     <div style="display:none" class="reveal-modal medium" id="<%= "showinfo-#{show.id}" %>">
       <h3><%= show.date.strftime('%B %d') %></h3>
       <h4 class="subheader"><%= "#{show.venue} - #{show.location}" %></h4>
@@ -26,7 +25,6 @@
       <%= link_to "tickets", show.link, class: "button radius" %>
       <a class="close-reveal-modal">&#215;</a>
     </div>
-    <% end %>
   <% end %>
   </table>
 <% end %>

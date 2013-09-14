@@ -27,7 +27,7 @@ class ShowsController < ApplicationController
 
   def update
     @show = Show.find params[:id]
-    if @show.update_attributes show_params
+    if @show.update show_params
       redirect_to root_path
     end
   end
