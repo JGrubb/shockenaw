@@ -18,3 +18,6 @@
 *.un~
 *.swp
 *.DS_Store
+public/assets
+config/initializers/smtp.rb
+public/timmy.mp3
