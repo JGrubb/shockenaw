@@ -3,7 +3,10 @@
 </div>
 <div>
   <%= simple_form_for @show do |f| %>
-    <%= f.input :date %>
+    <div class="input date required large-12 column">
+      <%= f.label :date %>
+      <%= f.date_field :date, required: true %>
+    </div>
     <%= f.input :venue %>
     <%= f.input :location %>
     <%= f.input :info, input_html: { rows: 6 } %>
