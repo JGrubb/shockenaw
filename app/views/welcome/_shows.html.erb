@@ -10,7 +10,7 @@
         <%= show.venue %></p></td>
       <td>
         <p>
-          <%= link_to "details", "#", class: "button radius small", data: { "reveal-id" => "showinfo-#{show.id}" } %>
+          <%= link_to "details", "#", class: "button radius tiny", data: { "reveal-id" => "showinfo-#{show.id}" } %>
           <% if current_user %>
             <br />
             <%= link_to "edit", edit_show_path(show), class: "button tiny secondary radius", data: { "reveal-id" => "show-edit", "reveal-ajax" => true } %>
@@ -18,7 +18,7 @@
         </p>
       </td>
     </tr>
-    <div style="display:none" class="reveal-modal medium" id="<%= "showinfo-#{show.id}" %>">
+    <div style="display:none" class="reveal-modal medium" id="<%= "showinfo-#{show.id}" %>" data-reveal>
       <h3><%= show.date.strftime('%B %d') %></h3>
       <h4 class="subheader"><%= "#{show.venue} - #{show.location}" %></h4>
       <%= simple_format show.info %>
