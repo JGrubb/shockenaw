@@ -22,3 +22,5 @@ public/assets
 config/initializers/smtp.rb
 public/timmy.mp3
 config/database.yml
+config/database.yml
+config/database.yml.old
