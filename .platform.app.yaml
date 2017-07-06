@@ -41,6 +41,7 @@ hooks:
     # The build hook runs before the application is deployed, and is useful for
     # assembling the codebase.
     build: |
+        set -e
         gem install bundler
         bundle install --jobs 6 --without development test
         bundle exec rake assets:precompile
