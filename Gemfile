@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-gem 'mysql2'
+# gem 'mysql2'
 gem 'sqlite3'
 
 # Use SCSS for stylesheets
@@ -40,14 +40,14 @@ end
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.0'
-  
+
 end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
-gem 'unicorn'
+gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
