@@ -20,6 +20,42 @@
 <section>
   <div class="row">
     <div class="large-12 column">
+      <h3>Some tunes</h3>
+    </div>
+    <div class="large-6 columns">
+      <%= image_tag 'food_locker.jpg' %>
+    </div>
+    <div class="large-6 columns">
+      <h4>SMB - Food Locker</h4>
+      <p>Behold, the long awaited first official release from the Shockenaw Mountain Boys - <strong>Food Locker</strong>.  Recorded live to a single microphone in July of 2017 during the annual Shawnee Riverkeeper canoe trip, Food Locker captures the Shockenaw Boys at their loose, improvisational best.</p>
+      <p>
+        <%= form_tag charges_path do %>
+        <article>
+          <% if flash[:error].present? %>
+            <div id="error_explanation">
+              <p><%= flash[:error] %></p>
+            </div>
+          <% end %>
+          <label class="amount">
+            <span>Amount: $3.99</span>
+          </label>
+        </article>
+
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="Food Locker mp3"
+                data-amount="399"
+                data-locale="auto"></script>
+        <% end %>
+      </p>
+
+
+    </div>
+  </div>
+</section>
+<section id="news">
+  <div class="row">
+    <div class="large-12 column">
       <h3>Some news</h3>
     <div class="flex-video"><iframe width="853" height="480" src="//www.youtube.com/embed/LXuipghEWNA?list=UUQqBMdgfteNt3179NiCdbOw" frameborder="0" allowfullscreen></iframe></div>
     </div>

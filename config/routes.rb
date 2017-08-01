@@ -6,6 +6,7 @@ Shock::Application.routes.draw do
 
   resources :shows
   resources :items
+  resources :charges
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
@@ -44,7 +45,7 @@ Shock::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
