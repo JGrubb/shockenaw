@@ -7,7 +7,7 @@
 name: 'app'
 
 # The runtime the application uses.
-type: "ruby:2.4"
+type: "ruby:2.3"
 
 # The configuration of app when it is exposed to the web.
 web:
