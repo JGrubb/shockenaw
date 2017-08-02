@@ -3,9 +3,10 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.1.0'
 gem 'stripe'
+gem 'rake', '< 11.0'
 
 # Use sqlite3 as the database for Active Record
-# gem 'mysql2'
+gem 'pg'
 gem 'sqlite3'
 
 # Use SCSS for stylesheets
@@ -41,7 +42,8 @@ end
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.0'
-
+  gem 'rb-readline'
+  gem 'pry'
 end
 
 # Use ActiveModel has_secure_password

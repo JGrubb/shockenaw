@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131229164609) do
+ActiveRecord::Schema.define(version: 20170802170602) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "customers", force: true do |t|
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "customers", ["email"], name: "index_customers_on_email", unique: true, using: :btree
+
+  create_table "orders", force: true do |t|
+    t.string   "uuid",           limit: 36
+    t.integer  "customer_id_id"
+    t.integer  "order_total"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orders", ["customer_id_id"], name: "index_orders_on_customer_id_id", using: :btree
 
   create_table "shows", force: true do |t|
     t.date     "date"
