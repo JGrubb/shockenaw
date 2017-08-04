@@ -15,13 +15,12 @@ gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
-# Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails'
 gem 'simple_form'
 gem 'money'
 gem 'aws-sdk'
 gem 'devise'
-gem 'responders', '~> 2.1.0'
+gem 'responders', '~> 2.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
