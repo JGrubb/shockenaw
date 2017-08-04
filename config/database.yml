@@ -8,7 +8,7 @@ development:
   adapter: postgresql
   encoding: utf8
   database: shock_dev
-  username: jgrubb
+  username: <%= `whoami` %>
   password: ""
   host: localhost
 

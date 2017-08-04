@@ -17,6 +17,7 @@
   	<title>The Shockenaw Mountain Boys</title>
 
   	<%= stylesheet_link_tag    "application" %>
+    <%= stylesheet_link_tag "https://unpkg.com/purecss@1.0.0/build/pure-min.css" %>
     <%= stylesheet_link_tag "//fonts.googleapis.com/css?family=Sancreek" %>
   	<%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
@@ -24,14 +25,14 @@
 
   <body>
     <div id="header">
-      <div class="row">
-        <header id="logo" class="large-12 columns">
+      <div class="pure-g">
+        <header id="logo" class="pure-u-1">
           <h1><%= link_to "The Shockenaw Mountain Boys", root_path %></h1>
         </header>
       </div>
     </div>
     <div id="body">
-      <div class="row">
+      <div class="pure-g">
         <%= notice %>
         <%= alert %>
       </div>

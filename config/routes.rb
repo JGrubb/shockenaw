@@ -7,6 +7,7 @@ Shock::Application.routes.draw do
   resources :shows
   resources :items
   resources :charges
+  get "orders/:id" => "orders#show", as: :order
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'

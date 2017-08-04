@@ -1,9 +1,11 @@
 class CreateOrders < ActiveRecord::Migration
   def change
-    create_table :orders do |t|
-      t.string :uuid, limit: 36
-      t.references :customer_id, index: true
-      t.integer :order_total
+
+    enable_extension 'uuid-ossp'
+
+    create_table :orders, id: :uuid do |t|
+      t.references :customer, index: true
+      t.integer :total
 
       t.timestamps
     end

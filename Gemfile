@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.1.0'
+gem 'rails', '~> 5.0.0'
 gem 'stripe'
 gem 'rake', '< 11.0'
 
@@ -10,18 +10,18 @@ gem 'pg'
 gem 'sqlite3'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
-gem 'foundation-rails', '~> 5.1.1'
+gem 'coffee-rails'
 gem 'simple_form'
-gem 'annotate'
-
+gem 'money'
+gem 'aws-sdk'
 gem 'devise'
+gem 'responders', '~> 2.1.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -44,6 +44,7 @@ group :test, :development do
   gem 'rspec-rails', '~> 2.0'
   gem 'rb-readline'
   gem 'pry'
+  gem 'debase'
 end
 
 # Use ActiveModel has_secure_password
