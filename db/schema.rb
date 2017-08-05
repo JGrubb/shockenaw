@@ -14,12 +14,15 @@ ActiveRecord::Schema.define(version: 20170805140010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
   create_table "customers", force: :cascade do |t|
-    t.string   "email",      limit: 255
+    t.string   "email"
+    t.string   "stripe_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["email"], name: "index_customers_on_email", unique: true, using: :btree
+    t.index ["stripe_id"], name: "index_customers_on_stripe_id", using: :btree
   end
 
   create_table "line_items", force: :cascade do |t|
@@ -33,12 +36,13 @@ ActiveRecord::Schema.define(version: 20170805140010) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string   "uuid",           limit: 36
-    t.integer  "customer_id_id"
-    t.integer  "order_total"
+    t.integer  "customer_id"
+    t.integer  "total"
+    t.uuid     "uuid"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["customer_id_id"], name: "index_orders_on_customer_id_id", using: :btree
+    t.index ["customer_id"], name: "index_orders_on_customer_id", using: :btree
+    t.index ["uuid"], name: "index_orders_on_uuid", using: :btree
   end
 
   create_table "products", force: :cascade do |t|
@@ -52,10 +56,10 @@ ActiveRecord::Schema.define(version: 20170805140010) do
 
   create_table "shows", force: :cascade do |t|
     t.date     "date"
-    t.string   "venue",      limit: 255
-    t.string   "location",   limit: 255
+    t.string   "venue"
+    t.string   "location"
     t.text     "info"
-    t.string   "link",       limit: 255
+    t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["date"], name: "index_shows_on_date", using: :btree
@@ -64,20 +68,20 @@ ActiveRecord::Schema.define(version: 20170805140010) do
   create_table "users", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0
+    t.integer  "sign_in_count",          default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
-    t.string   "confirmation_token",     limit: 255
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email",      limit: 255
+    t.string   "unconfirmed_email"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

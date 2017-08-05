@@ -3,9 +3,10 @@ class CreateOrders < ActiveRecord::Migration
 
     enable_extension 'uuid-ossp'
 
-    create_table :orders, id: :uuid do |t|
+    create_table :orders do |t|
       t.references :customer, index: true
       t.integer :total
+      t.uuid :uuid, index: true
 
       t.timestamps
     end
