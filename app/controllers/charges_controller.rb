@@ -20,8 +20,9 @@ class ChargesController < ApplicationController
     )
 
     order = Order.create(customer: shock_customer, total: @amount)
+    order = order.reload
 
-    redirect_to order
+    redirect_to order_path(uuid: order.uuid)
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

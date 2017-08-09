@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
   def show
-    @order = Order.find(params[:id])
+    @order = Order.find_by(uuid: params[:uuid])
   end
 end
