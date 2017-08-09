@@ -47,4 +47,4 @@ hooks:
         bundle exec rake assets:precompile
     # We run deploy hook after your application has been deployed and started.
     deploy: |
-        RACK_ENV=production bundle exec rake db:migrate
+#        RACK_ENV=production bundle exec rake db:migrate

@@ -24,7 +24,10 @@ test:
 # Do not set this db to the same as development or production.
 
 production:
-  adapter: sqlite3
-  database: db/prod/shock_prod.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: postgresql
+  encoding: utf8
+  database: <%= ENV['DB_PATH'] %>
+  username: <%= ENV['DB_USER' %>
+  password: <%= ENV['DB_PASS'] %>
+  host: <%= ENV['DB_HOST'] %>
+  post: <%= ENV['DB_PORT'] %>
