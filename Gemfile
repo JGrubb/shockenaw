@@ -44,6 +44,7 @@ group :test, :development do
   gem 'rb-readline'
   gem 'pry'
   gem 'debase'
+  gem 'stripe-ruby-mock', '~> 2.4'
 end
 
 # Use ActiveModel has_secure_password
