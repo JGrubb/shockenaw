@@ -38,7 +38,7 @@ end
 %>
 
 production:
-  adapter: postgresql
+  adapter: <%= ENV['DB_ADAPTER'] || 'postgresql' %>
   encoding: utf8
   database: <%= ENV['DB_PATH'] %>
   username: <%= ENV['DB_USERNAME'] %>
