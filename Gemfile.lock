@@ -229,7 +229,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-nulldb-adapter
   aws-sdk
   coffee-rails
   debase
