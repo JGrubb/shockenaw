@@ -47,6 +47,6 @@ hooks:
         set -e
         gem install bundler
         bundle install --jobs 6 --without development test
-        DB_ADAPTER=nulldb bundle exec rake assets:precompile
+#        DB_ADAPTER=nulldb bundle exec rake assets:precompile
     deploy: |
         RACK_ENV=production bundle exec rake db:migrate
