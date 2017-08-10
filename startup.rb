@@ -3,7 +3,7 @@
 require "base64"
 require "json"
 
-psh_rels = JSON.parse(Base64.decode(ENV['PLATFORM_RELATIONSHIPS']))
+psh_rels = JSON.parse(Base64.decode64(ENV['PLATFORM_RELATIONSHIPS']))
 
 db = psh_rels['database'].first
 
