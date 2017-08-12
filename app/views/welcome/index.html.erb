@@ -1,19 +1,23 @@
 <section id="intro">
   <div class="pure-g">
     <div class="pure-u-1">
-      <%= image_tag( asset_path 'shock.jpg' ) %>
+      <%= image_tag(asset_path 'shock.jpg') %>
     </div>
   </div>
 </section>
 <section id="info">
   <div class="pure-g">
-    <div class="pure-u-2-5">
+    <div class="pure-u-1 pure-u-md-2-5">
       <div class="pad-it">
         <h3>the bio</h3>
-        <p>The Shockenaw Mountain Boys were formed for fun and profit (so far mostly fun) during the second gulf war. Featuring the talents of three current members of the national touring act Railroad Earth and one former member and current member of the excellent Emmit-Nershi Band, their performances are legend and by legend I mean mostly myth. So if you have the opportunity to see them, you should. It would be like seeing a unicorn... sort of.</p>
+        <p>The Shockenaw Mountain Boys were formed for fun and profit (so far mostly fun) during the second gulf war.
+          Featuring the talents of three current members of the national touring act Railroad Earth and one former
+          member and current member of the excellent Emmit-Nershi Band, their performances are legend and by legend I
+          mean mostly myth. So if you have the opportunity to see them, you should. It would be like seeing a unicorn...
+          sort of.</p>
       </div>
     </div>
-    <div class="pure-u-3-5">
+    <div class="pure-u-1 pure-u-md-3-5">
       <div class="pad-it">
         <h3>the shows</h3>
         <%= render 'shows' %>
@@ -26,34 +30,38 @@
     <div class="pure-u-1">
       <h3>Some tunes</h3>
     </div>
-    <div class="pure-u-1-2">
+    <div class="pure-u-1 pure-u-md-1-2">
       <div class="pad-it">
         <%= image_tag 'food_locker.jpg' %>
       </div>
     </div>
-    <div class="pure-u-1-2">
+    <div class="pure-u-1 pure-u-md-1-2">
       <div class="pad-it">
         <h4>SMB - Food Locker</h4>
-        <p>Behold, the long awaited first official release from the Shockenaw Mountain Boys - <strong>Food Locker</strong>.  Recorded live to a single microphone in July of 2017 during the annual Shawnee Riverkeeper canoe trip, Food Locker captures the Shockenaw Boys at their loose, improvisational best.</p>
-        <p>
-          <%= form_tag charges_path do %>
-          <article>
-            <% if flash[:error].present? %>
-              <div id="error_explanation">
-                <p><%= flash[:error] %></p>
-              </div>
-            <% end %>
-            <label class="amount">
-              <span>Amount: $3.99</span>
-            </label>
-          </article>
-          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                  data-description="Food Locker mp3"
-                  data-amount="399"
-                  data-locale="auto"></script>
+        <p>Behold, the long awaited first official release from the Shockenaw Mountain Boys -
+          <strong>Food Locker</strong>. Recorded live to a single microphone in July of 2017 during the annual Shawnee
+          Riverkeeper canoe trip, Food Locker captures the Shockenaw Boys at their loose, improvisational best.</p>
+        <div>
+
+          <% @products.each do |product, idx| %>
+            <div class="pure-u-1">
+              <% if flash[:error].present? %>
+                  <div id="error_explanation">
+                    <p><%= flash[:error] %></p>
+                  </div>
+              <% end %>
+              <%= form_tag new_order_path, id: product[:description].gsub(/ /, '_').downcase do %>
+                  <article>
+                    <label class="amount">
+                      <span><%= product.description %>: $<%= Money.new product.price %></span>
+                    </label>
+                    <%= hidden_field_tag :sku, product.sku %>
+                    <button class="checkout-button">Buy Online</button>
+                  </article>
+              <% end %>
+            </div>
           <% end %>
-        </p>
+        </div>
       </div>
     </div>
   </div>
@@ -62,7 +70,9 @@
   <div class="pure-g">
     <div class="pure-u-1">
       <h3>Some news</h3>
-    <div class="flex-video pad-it"><iframe width="960" height="540" src="https://www.youtube.com/embed/LXuipghEWNA" frameborder="0" allowfullscreen></iframe></div>
+      <div class="flex-video pad-it">
+        <iframe width="960" height="540" src="https://www.youtube.com/embed/LXuipghEWNA" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
   </div>
 </section>
@@ -74,3 +84,32 @@
     <%= render 'dudes' %>
   </div>
 </section>
+
+<% content_for :closing do %>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script type="text/javascript" charset="utf-8">
+//        var handler = StripeCheckout.configure({
+//            key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+//            locale: 'auto',
+//
+//            name: 'Food Locker',
+//            description: 'Food Locker Download',
+//            token: function (token) {
+//                $('input#stripeToken').val(token.id);
+//                $('form').submit();
+//            }
+//        });
+//        $('.checkout-button').on('click', function(e) {
+//          e.preventDefault();
+//          var amount = parseInt($(e.currentTarget.form.amount).val());
+//          console.log(amount);
+//          handler.open({
+//              amount: amount
+//          });
+//        });
+//        $('form').submit( function(e) {
+//            e.preventDefault();
+//            console.log(e);
+//        });
+    </script>
+<% end %>

@@ -9,6 +9,7 @@ gem 'rake', '< 11.0'
 gem 'pg'
 gem 'sqlite3'
 gem 'activerecord-nulldb-adapter'
+gem 'aasm'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'

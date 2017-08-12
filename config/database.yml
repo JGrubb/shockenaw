@@ -26,13 +26,15 @@ test:
 require "base64"
 require "json"
 
-psh_rels = JSON.parse(Base64.decode64(ENV['PLATFORM_RELATIONSHIPS']))
+if ENV.has_key? 'PLATFORM_BRANCH'
+  psh_rels = JSON.parse(Base64.decode64(ENV['PLATFORM_RELATIONSHIPS']))
 
-db = psh_rels['database'].first
+  db = psh_rels['database'].first
 
-db.each do |k, v|
-  if v.is_a? String
-    ENV["DB_#{k.upcase}"] = v
+  db.each do |k, v|
+    if v.is_a? String
+      ENV["DB_#{k.upcase}"] = v
+    end
   end
 end
 %>

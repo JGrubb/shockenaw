@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170805140010) do
+ActiveRecord::Schema.define(version: 20170811203028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20170805140010) do
     t.uuid     "uuid"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "aasm_state"
     t.index ["customer_id"], name: "index_orders_on_customer_id", using: :btree
     t.index ["uuid"], name: "index_orders_on_uuid", using: :btree
   end
