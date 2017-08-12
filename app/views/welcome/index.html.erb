@@ -50,13 +50,13 @@
                     <p><%= flash[:error] %></p>
                   </div>
               <% end %>
-              <%= form_tag new_order_path, id: product[:description].gsub(/ /, '_').downcase do %>
+              <%= form_tag order_path do %>
                   <article>
                     <label class="amount">
                       <span><%= product.description %>: $<%= Money.new product.price %></span>
                     </label>
                     <%= hidden_field_tag :sku, product.sku %>
-                    <button class="checkout-button">Buy Online</button>
+                    <%= submit_tag "Buy Online" %>
                   </article>
               <% end %>
             </div>

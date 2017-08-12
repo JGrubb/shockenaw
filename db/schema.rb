@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170811203028) do
+ActiveRecord::Schema.define(version: 20170812004848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20170811203028) do
   create_table "orders", force: :cascade do |t|
     t.integer  "customer_id"
     t.integer  "total"
-    t.uuid     "uuid"
+    t.uuid     "uuid",        default: -> { "uuid_generate_v4()" }
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "aasm_state"

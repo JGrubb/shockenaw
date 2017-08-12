@@ -7,7 +7,7 @@ Shock::Application.routes.draw do
 
   resources :shows
   resources :products, only: [:create, :edit, :update, :delete]
-  get "order/:uuid" => "orders#show", as: :order
+  get "order/:uuid" => "orders#show", as: :show_order
   resource :order, except: [:show]
   post "charges" => "charges#create", as: :charges
 
