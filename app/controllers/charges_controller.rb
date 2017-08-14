@@ -3,13 +3,8 @@ class ChargesController < ApplicationController
   require 'securerandom'
 
   def create
-    products = {
-        'mp3' => 399,
-        'flac' => 599
-    }
-    # Amount in cents
-    @amount = products[params[:name]]
 
+    @product = Product.find_by sku: params[:sku]
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
       :source  => params[:stripeToken]
@@ -20,14 +15,15 @@ class ChargesController < ApplicationController
 
     charge = Stripe::Charge.create(
       :customer    => customer.id,
-      :amount      => @amount,
+      :amount      => @product.price,
       :description => 'Rails Stripe customer',
       :currency    => 'usd'
     )
 
-    order = Order.create(customer: shock_customer, total: @amount, uuid: SecureRandom.uuid)
+    order = Order.create(customer: shock_customer)
+    order.products << @product
 
-    redirect_to order_path(uuid: order.uuid)
+    redirect_to show_order_path(uuid: order.uuid)
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

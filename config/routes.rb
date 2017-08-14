@@ -8,7 +8,8 @@ Shock::Application.routes.draw do
   resources :shows
   resources :products, only: [:create, :edit, :update, :delete]
   get "order/:uuid" => "orders#show", as: :show_order
-  resource :order, except: [:show]
+  get "buy/:sku" => "orders#new", as: :buy
+  resource :order, except: [:new, :show]
   post "charges" => "charges#create", as: :charges
 
   # You can have the root of your site routed with "root"

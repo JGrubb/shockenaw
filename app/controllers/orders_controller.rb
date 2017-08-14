@@ -1,4 +1,9 @@
 class OrdersController < ApplicationController
+
+  def new
+    @product = Product.find_by sku: params[:sku]
+  end
+
   def show
     @order = Order.find_by(uuid: params[:uuid])
   end
