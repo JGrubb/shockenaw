@@ -1,30 +1,31 @@
 <% if @shows.empty? %>
-  <h5>Unfortunately...</h5>
-  <p>No upcoming shows at this point in time.</p>
+    <h5>Unfortunately...</h5>
+    <p>No upcoming shows at this point in time.</p>
 <% else %>
-  <table id="shows">
-  <% @shows.each do |show| %>
-    <tr>
-      <td><p><%= show.date.strftime('%B %d') %></p></td>
-      <td><p><%= show.location %><br />
-        <%= show.venue %></p></td>
-      <td>
-        <p>
-          <%= link_to "details", "#", class: "button radius tiny", data: { "reveal-id" => "showinfo-#{show.id}" } %>
-          <% if current_user %>
-            <br />
-            <%= link_to "edit", edit_show_path(show), class: "button tiny secondary radius", data: { "reveal-id" => "show-edit", "reveal-ajax" => true } %>
-          <% end %>
-        </p>
-      </td>
-    </tr>
-    <div style="display:none" class="reveal-modal medium" id="<%= "showinfo-#{show.id}" %>" data-reveal>
-      <h3><%= show.date.strftime('%B %d') %></h3>
-      <h4 class="subheader"><%= "#{show.venue} - #{show.location}" %></h4>
-      <%= simple_format show.info %>
-      <%= link_to "tickets", show.link, class: "button radius" %>
-      <a class="close-reveal-modal">&#215;</a>
-    </div>
-  <% end %>
-  </table>
+    <table id="shows">
+      <% @shows.each do |show| %>
+          <tr>
+            <td><%= show.date.strftime('%B %d') %></td>
+            <td><%= show.location %></td>
+            <td><%= show.venue %></td>
+            <td>
+              <%= link_to "details", "#", class: "button radius tiny showinfo", :id => "showinfo-#{show.id}" %>
+              <% if current_user %>
+                  <br/>
+                  <%= link_to "edit", edit_show_path(show), class: "button tiny secondary radius", data: {"reveal-id" => "show-edit", "reveal-ajax" => true} %>
+              <% end %>
+            </td>
+          </tr>
+          <tr style="display:none" class="info-row" id="<%= "modal-showinfo-#{show.id}" %>">
+            <td colspan="3">
+              <%= simple_format show.info %>
+
+            </td>
+            <td colspan="1">
+              <%= link_to "tickets", show.link, class: "button radius" %>
+              <a class="close">&#215;</a>
+            </td>
+          </tr>
+      <% end %>
+    </table>
 <% end %>

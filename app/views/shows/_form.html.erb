@@ -2,15 +2,24 @@
   <a class="close-reveal-modal">&#215;</a>
 </div>
 <div>
-  <%= simple_form_for @show do |f| %>
-    <div class="input date required large-12 column">
-      <%= f.label :date %>
-      <%= f.date_field :date, required: true %>
-    </div>
-    <%= f.input :venue %>
-    <%= f.input :location %>
-    <%= f.input :info, input_html: { rows: 6 } %>
-    <%= f.input :link %>
-    <%= f.button :submit, class: "button small" %>
+  <%= form_for @show, html: { class: "pure-form pure-form-stacked" } do |f| %>
+      <div class="input date required large-12 column">
+        <%= f.label :date %>
+        <%= f.date_field :date, required: true %>
+      </div>
+      <%= f.label :venue %>
+      <%= f.text_field :venue %>
+
+      <%= f.label :location %>
+      <%= f.text_field :location %>
+
+      <%= f.label :info %>
+      <%= f.text_area :info, input_html: {rows: 6} %>
+
+      <%= f.label :link %>
+      <%= f.text_field :link %>
+
+
+      <%= f.button :submit, class: "button small" %>
   <% end %>
 </div>
