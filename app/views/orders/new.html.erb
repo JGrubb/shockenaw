@@ -1,0 +1,40 @@
+<div>
+  <div class="pure-g">
+    <div class="pure-u-1">
+      <table class="pure-table" id="order">
+        <thead>
+        <tr>
+          <th>
+            Product
+          </th>
+          <th>
+            Price
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>
+            <%= @product.title %>
+          </td>
+          <td>
+            $<%= Money.new @product.price %>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <%= form_tag charges_path do %>
+        <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+        data-amount="<%= @product.price %>"
+        data-description="<%= @product.title %>"
+        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-locale="auto"
+        data-zip-code="true">
+        </script>
+          <%= hidden_field_tag :sku, @product.sku %>
+      <% end %>
+    </div>
+  </div>
+</div>
