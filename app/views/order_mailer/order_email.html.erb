@@ -1,3 +1,5 @@
-Hey <%= @user.email %>, this thing actually works.
+<p>Hey <%= @user.email %>, this thing actually works.</p>
 
-Here's your order #<%= @order.uuid %>.
+<p>Here's your order #<%= link_to @order.uuid, show_order_path(uuid: @order.uuid) %>. Please click on that link to retrieve your download and thank you very, very much for supporting live music!</p>
+
+<p>-- Shockenaw</p>
