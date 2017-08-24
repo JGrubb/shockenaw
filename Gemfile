@@ -10,6 +10,7 @@ gem 'pg'
 gem 'sqlite3'
 gem 'activerecord-nulldb-adapter'
 gem 'aasm'
+gem 'sidekiq'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
