@@ -69,8 +69,7 @@ Shock::Application.configure do
   config.action_mailer.default_url_options = { host: 'http://shockenaw.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      :port => 465,
-      :host => '127.0.0.1'
+      :port => 587,
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
