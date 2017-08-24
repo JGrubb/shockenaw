@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20170814162435) do
   create_table "customers", id: :serial, force: :cascade do |t|
     t.string "email"
     t.string "stripe_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["stripe_id"], name: "index_customers_on_stripe_id"
   end
@@ -37,9 +37,9 @@ ActiveRecord::Schema.define(version: 20170814162435) do
 
   create_table "orders", id: :serial, force: :cascade do |t|
     t.integer "customer_id"
-    t.uuid "uuid", default: -> { "uuid_generate_v4()" }
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.uuid "uuid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "aasm_state"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
     t.index ["uuid"], name: "index_orders_on_uuid"
