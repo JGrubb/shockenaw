@@ -23,6 +23,10 @@
         </tr>
         </tbody>
       </table>
+      <div class="">
+        <a id="cc-info-toggle">CC Payment info</a>
+        <p style="display:none" id="cc-info">Note: We use a 3rd party credit card processor to handle your transaction.  Your CC information is transmitted directly to the processor and at no time does your information touch this website.  We do not store your credit card number, nor do we </p>
+      </div>
       <%= form_tag charges_path do %>
         <script
         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
