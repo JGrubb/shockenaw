@@ -15,13 +15,20 @@
 //= require turbolinks
 //= require_tree .
 
-$('.showinfo').on('click', function(e) {
-    e.preventDefault();
-    $this = $(this);
-    var id = $this.attr('id');
-    $('#modal-' + id).show();
-});
-$('.close').on('click', function(e) {
-    console.log('hello');
-    $(this).closest('.info-row').hide();
+
+jQuery(function($) {
+    $('.showinfo').on('click', function(e) {
+        e.preventDefault();
+        $this = $(this);
+        var id = $this.attr('id');
+        $('#modal-' + id).show();
+    });
+    $('.close').on('click', function(e) {
+        console.log('hello');
+        $(this).closest('.info-row').hide();
+    });
+    $('#cc-info-toggle').on('click', function(e) {
+        $('#cc-info').toggle();
+        e.preventDefault();
+    })
 });

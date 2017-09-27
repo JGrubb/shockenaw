@@ -36,11 +36,13 @@ Product.create({
                    title: "Food Locker mp3",
                    description: description,
                    price: 399,
-                   sku: SecureRandom.uuid
+                   sku: SecureRandom.uuid,
+                   file_url: "CvIs3hSWAAEV4TQ.jpg"
                })
 Product.create({
                    title: "Food Locker FLAC",
                    description: description,
                    price: 599,
-                   sku: SecureRandom.uuid
+                   sku: SecureRandom.uuid,
+                   file_url: "CvIs3hSWAAEV4TQ.jpg"
                })

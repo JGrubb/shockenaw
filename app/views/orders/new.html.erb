@@ -25,8 +25,18 @@
         </tbody>
       </table>
       <div class="">
-        <a id="cc-info-toggle">CC Payment info</a>
-        <p style="display:none" id="cc-info">Note: We use a 3rd party credit card processor to handle your transaction.  Your CC information is transmitted directly to the processor and at no time does your information touch this website.  We do not store your credit card number, nor do we </p>
+        <a id="cc-info-toggle" href="#">CC Payment info</a>
+        <div style="display:none" id="cc-info">
+          <p>Note: We use a 3rd party credit card processor to handle your transaction.  Your CC
+            information is transmitted directly to the processor and at no time does your information touch this website.
+            We do not store your credit card number.  Charges are processed via a single use token that is returned from
+            the credit card processor for the use of this transaction only.  This token is stored in case the transaction
+            fails and needs to be retried later.  If this site were compromised, the token would no longer be valid for
+            making charges.</p>
+          <p>We take your security very, very seriously.  If you have any further questions about your data on this website
+          please reach out to <a href="mailto:grubb@johnnygrubb.com">grubb@johnnygrubb.com</a> directly.</p>
+        </div>
+
       </div>
       <%= form_tag charges_path do %>
         <script
