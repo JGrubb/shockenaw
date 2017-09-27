@@ -30,6 +30,14 @@ web:
             expires: 1h
             allow: true
 
+
+workers:
+    sidekiq:
+        size: S
+        commands:
+            start: |
+                bundle exec sidekiq
+
 # The mounts that will be performed when the package is deployed.
 mounts:
    "/log": "shared:files/log"

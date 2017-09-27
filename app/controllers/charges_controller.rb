@@ -23,6 +23,8 @@ class ChargesController < ApplicationController
     order = Order.create(customer: shock_customer)
     order.products << @product
 
+    OrderMailer.order_email(shock_customer, order).deliver_now
+
     redirect_to show_order_path(uuid: order.uuid)
 
   rescue Stripe::CardError => e
