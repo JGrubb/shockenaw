@@ -25,7 +25,7 @@ Tracklist:
 - Two of Us
 - When I Go
 - Shockenaw Breakdown
-- ??? I wanna go home ???
+- Sloop John B
 - This Blue Earth
 - Rock on Daddy-O
 - Cuckoo Meddly
