@@ -1,0 +1,12 @@
+<div class="pure-g">
+  <div class="pure-u-1">
+    <h3>Order # <%= @order.uuid %></h3>
+    <p>
+      Hi, this is your link for <%= @order.products.first.title %>.
+    </p>
+    <p>
+      <%= link_to "Download here", @order.dl_url, download: @order.products.first.title, class: "pure-button pure-button-primary" %>
+    </p>
+  </div>
+
+</div>

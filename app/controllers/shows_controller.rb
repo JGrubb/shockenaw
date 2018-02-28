@@ -1,12 +1,13 @@
 class ShowsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def show
 
   end
   
   def new
     @show = Show.new
-    render layout: false
   end
 
   def create

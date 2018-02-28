@@ -26,9 +26,10 @@ Shock::Application.configure do
   config.assets.js_compressor = :uglifier
   config.assets.css_compressor = :sass
   config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+  # config.assets.initialize_on_precompile = false
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Generate digests for assets URLs.
   config.assets.digest = true
@@ -65,8 +66,16 @@ Shock::Application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { host: 'http://shockenaw.com' }
-  config.action_mailer.delivery_method = :smtp
+  primary_route = String.new
+  if ENV.has_key? 'PLATFORM_ROUTES'
+    routes = JSON.parse Base64.decode64(ENV['PLATFORM_ROUTES'])
+    routes.each do |route|
+      primary_route = route[0] if route[1]['type'] == 'upstream'
+    end
+  end
+  config.action_mailer.default_url_options = { host: primary_route }
+  config.action_mailer.delivery_method = :sendmail
+
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).

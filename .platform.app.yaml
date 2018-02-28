@@ -9,6 +9,9 @@ name: 'app'
 # The runtime the application uses.
 type: "ruby:2.3"
 
+relationships:
+  database: "postgresdb:postgresql"
+
 # The configuration of app when it is exposed to the web.
 web:
     upstream:
@@ -27,6 +30,14 @@ web:
             expires: 1h
             allow: true
 
+
+workers:
+    sidekiq:
+        size: S
+        commands:
+            start: |
+                bundle exec sidekiq
+
 # The mounts that will be performed when the package is deployed.
 mounts:
    "/log": "shared:files/log"
@@ -44,7 +55,6 @@ hooks:
         set -e
         gem install bundler
         bundle install --jobs 6 --without development test
-        bundle exec rake assets:precompile
-    # We run deploy hook after your application has been deployed and started.
+#        DB_ADAPTER=nulldb bundle exec rake assets:precompile
     deploy: |
         RACK_ENV=production bundle exec rake db:migrate

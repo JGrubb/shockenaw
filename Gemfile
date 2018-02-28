@@ -1,26 +1,29 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.1.0'
+gem 'rails', '~> 5.1.0'
 gem 'stripe'
+gem 'rake', '< 11.0'
 
 # Use sqlite3 as the database for Active Record
-# gem 'mysql2'
+gem 'pg'
 gem 'sqlite3'
+# gem 'activerecord-nulldb-adapter'
+gem 'aasm'
+gem 'sidekiq'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
-gem 'foundation-rails', '~> 5.1.1'
+gem 'coffee-rails'
 gem 'simple_form'
-gem 'annotate'
-
+gem 'money'
+gem 'aws-sdk'
 gem 'devise'
+gem 'responders', '~> 2.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -32,7 +35,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder', '~> 2.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -40,8 +43,11 @@ group :doc do
 end
 
 group :test, :development do
-  gem 'rspec-rails', '~> 2.0'
-
+  gem 'rspec-rails', '~> 3.0'
+  gem 'rb-readline'
+  gem 'pry'
+  gem 'debase'
+  gem 'stripe-ruby-mock', '~> 2.4'
 end
 
 # Use ActiveModel has_secure_password

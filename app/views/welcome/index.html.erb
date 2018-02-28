@@ -1,33 +1,105 @@
 <section id="intro">
-  <div class="row">
-    <div class="large-12 columns">
-      <%= image_tag( asset_path 'shock.jpg' ) %>
+  <div class="pure-g">
+    <div class="pure-u-1">
+      <%= image_tag(asset_path 'shock.jpg') %>
     </div>
   </div>
 </section>
 <section id="info">
-  <div class="row">
-    <div class="large-5 columns">
-      <h3>the bio</h3>
-      <p>The Shockenaw Mountain Boys were formed for fun and profit (so far mostly fun) during the second gulf war. Featuring the talents of three current members of the national touring act Railroad Earth and one former member and current member of the excellent Emmit-Nershi Band, their performances are legend and by legend I mean mostly myth. So if you have the opportunity to see them, you should. It would be like seeing a unicorn... sort of.</p>
+  <div class="pure-g">
+    <div class="pure-u-1 pure-u-md-2-5">
+      <div class="pad-it">
+        <h3>the bio</h3>
+        <p>The Shockenaw Mountain Boys were formed for fun and profit (so far mostly fun) during the second gulf war.
+          Featuring the talents of three current members of the national touring act Railroad Earth and one former
+          member and current member of the excellent Emmit-Nershi Band, their performances are legend and by legend I
+          mean mostly myth. So if you have the opportunity to see them, you should. It would be like seeing a unicorn...
+          sort of.</p>
+      </div>
     </div>
-    <div class="large-7 columns">
-      <h3>the shows</h3>
-      <%= render 'shows' %>
+    <div class="pure-u-1 pure-u-md-3-5">
+      <div class="pad-it">
+        <h3>the shows</h3>
+        <%= render 'shows' %>
+      </div>
     </div>
   </div>
 </section>
 <section>
-  <div class="row">
-    <div class="large-12 column">
+  <div class="pure-g">
+    <div class="pure-u-1">
+      <h3>Some tunes</h3>
+    </div>
+    <div class="pure-u-1 pure-u-md-1-2">
+      <div class="pad-it">
+        <%= image_tag 'food_locker.jpg' %>
+      </div>
+    </div>
+    <div class="pure-u-1 pure-u-md-1-2">
+      <div class="pad-it">
+        <h4>SMB - Food Locker</h4>
+        <p>Behold, the long awaited first official release from the Shockenaw Mountain Boys -
+          <strong>Food Locker</strong>. Recorded live to a single microphone in July of 2017 during the annual Shawnee
+          Riverkeeper canoe trip, Food Locker captures the Shockenaw Boys at their loose, improvisational best.</p>
+        <div>
+
+          <ul>
+            <% @products.each do |product, idx| %>
+              <li>
+                <%= link_to product.title, buy_path(product.sku) %> - $<%= Money.new product.price %>
+              </li>
+            <% end %>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="news">
+  <div class="pure-g">
+    <div class="pure-u-1">
       <h3>Some news</h3>
-    <div class="flex-video"><iframe width="853" height="480" src="//www.youtube.com/embed/LXuipghEWNA?list=UUQqBMdgfteNt3179NiCdbOw" frameborder="0" allowfullscreen></iframe></div>
+      <div class="flex-video pad-it">
+        <iframe width="960" height="540" src="https://www.youtube.com/embed/LXuipghEWNA" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
   </div>
 </section>
 <section id="members">
-  <div class="row">
-    <h2 class="section-header">the dudes</h2>
+  <div class="pure-g">
+    <div class="pure-u-1">
+      <h2 class="section-header">the dudes</h2>
+    </div>
     <%= render 'dudes' %>
   </div>
 </section>
+
+<% content_for :closing do %>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script type="text/javascript" charset="utf-8">
+//        var handler = StripeCheckout.configure({
+//            key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+//            locale: 'auto',
+//
+//            name: 'Food Locker',
+//            description: 'Food Locker Download',
+//            token: function (token) {
+//                $('input#stripeToken').val(token.id);
+//                $('form').submit();
+//            }
+//        });
+//        $('.checkout-button').on('click', function(e) {
+//          e.preventDefault();
+//          var amount = parseInt($(e.currentTarget.form.amount).val());
+//          console.log(amount);
+//          handler.open({
+//              amount: amount
+//          });
+//        });
+//        $('form').submit( function(e) {
+//            e.preventDefault();
+//            console.log(e);
+//        });
+    </script>
+<% end %>

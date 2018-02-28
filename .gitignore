@@ -24,3 +24,4 @@ public/timmy.mp3
 config/database.yml
 config/database.yml.old
 *.sqlite3
+.idea

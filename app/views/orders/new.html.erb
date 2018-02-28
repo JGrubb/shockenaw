@@ -1,0 +1,55 @@
+<div>
+  <div class="pure-g">
+    <div class="pure-u-1">
+      <div><%= simple_format @product.description %></div>
+      <table class="pure-table" id="order">
+        <thead>
+        <tr>
+          <th>
+            Product
+          </th>
+          <th>
+            Price
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>
+            <%= @product.title %>
+          </td>
+          <td>
+            $<%= Money.new @product.price %>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="">
+        <a id="cc-info-toggle" href="#">CC Payment info</a>
+        <div style="display:none" id="cc-info">
+          <p>Note: We use a 3rd party credit card processor to handle your transaction.  Your CC
+            information is transmitted directly to the processor and at no time does your information touch this website.
+            We do not store your credit card number.  Charges are processed via a single use token that is returned from
+            the credit card processor for the use of this transaction only.  This token is stored in case the transaction
+            fails and needs to be retried later.  If this site were compromised, the token would no longer be valid for
+            making charges.</p>
+          <p>We take your security very, very seriously.  If you have any further questions about your data on this website
+          please reach out to <a href="mailto:grubb@johnnygrubb.com">grubb@johnnygrubb.com</a> directly.</p>
+        </div>
+
+      </div>
+      <%= form_tag charges_path do %>
+        <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+        data-amount="<%= @product.price %>"
+        data-description="<%= @product.title %>"
+        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-locale="auto"
+        data-zip-code="true">
+        </script>
+          <%= hidden_field_tag :sku, @product.sku %>
+      <% end %>
+    </div>
+  </div>
+</div>

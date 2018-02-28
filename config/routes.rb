@@ -1,11 +1,16 @@
 Shock::Application.routes.draw do
+
   devise_for :users
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   resources :shows
-  resources :items
+  resources :products, only: [:create, :edit, :update, :delete]
+  get "order/:uuid" => "orders#show", as: :show_order
+  get "buy/:sku" => "orders#new", as: :buy
+  resource :order, except: [:new, :show]
+  post "charges" => "charges#create", as: :charges
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
@@ -44,7 +49,7 @@ Shock::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
